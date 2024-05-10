@@ -1,1 +1,3 @@
-// to do...
+export type account = {
+  amount: number
+};
