@@ -1,0 +1,25 @@
+{
+  "name": "ebanx-home-assignment",
+  "description": "EBANX - Junior Software Engineer - Home assignment",
+  "author": "Gabriel Pereira Andrade",
+  "version": "1.0.0",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gabrizz/ebanx-home-assignment.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Gabrizz/ebanx-home-assignment/issues"
+  },
+  "homepage": "https://github.com/Gabrizz/ebanx-home-assignment#readme",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "tsc && node dist/index.js",
+    "start:dev": "nodemon"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
