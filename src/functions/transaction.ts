@@ -52,8 +52,14 @@ function transfer(amount: number, account_id: string, receiving_account_id: stri
 export function transaction(
   amount: number,
   account_id: string,
-  type: 'deposit' | 'withdraw'
-): depositResponse | withdrawResponse;
+  type: 'deposit'
+): depositResponse;
+
+export function transaction(
+  amount: number,
+  account_id: string,
+  type: 'withdraw'
+): withdrawResponse;
 
 export function transaction(
   amount: number,

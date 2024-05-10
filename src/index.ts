@@ -1,7 +1,7 @@
 import express, { ErrorRequestHandler, RequestHandler } from "express";
 
 import accountRoutes from './routes/account';
-// import transactionRoutes from './routes/transaction';
+import transactionRoutes from './routes/transaction';
 
 const app = express();
 
@@ -15,7 +15,7 @@ const corsHandler: RequestHandler = async (req, res, next) => {
 app.use(corsHandler);
 
 app.use(accountRoutes);
-// app.use(transactionRoutes);
+app.use(transactionRoutes);
 
 const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
   console.log(err);
