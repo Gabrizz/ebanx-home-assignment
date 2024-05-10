@@ -14,3 +14,9 @@ export function notFoundError(key: string) {
   error.statusCode = 404;
   return error;
 }
+
+export function insufficientBalanceError() {
+  const error: any = new Error('Insufficient balance');
+  error.statusCode = 400;
+  return error;
+}
