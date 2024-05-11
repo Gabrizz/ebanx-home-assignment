@@ -1,4 +1,4 @@
-import accountsDict from '../db';
+import { getAccountById, getAccountsDict, updateAccountById } from '../db';
 import {
   depositResponse,
   transferResponse,
@@ -8,27 +8,31 @@ import {
 import { insufficientBalanceError, notFoundError } from './shared';
 
 function deposit(amount: number, account_id: string) {
+  const accountsDict = getAccountsDict();
   if (account_id in accountsDict) {
-    accountsDict[account_id].amount = accountsDict[account_id].amount + amount;
+    const newAmount = accountsDict[account_id].amount + amount;
+    updateAccountById(account_id, { amount: newAmount });
   } else {
-    accountsDict[account_id] = { amount: amount };
+    updateAccountById(account_id, { amount: amount });
   }
   const depositResponse: depositResponse = {
     destination: {
       id: account_id,
-      balance: accountsDict[account_id].amount
+      balance: getAccountById(account_id)!.amount
     }
   }
   return depositResponse;
 };
 function withdraw(amount: number, account_id: string) {
+  const accountsDict = getAccountsDict();
   if (account_id in accountsDict) {
     if (amount <= accountsDict[account_id].amount) {
-      accountsDict[account_id].amount -= amount;
+      const newAmount = accountsDict[account_id].amount - amount;
+      updateAccountById(account_id, { amount: newAmount });
       const withdrawResponse: withdrawResponse = {
         origin: {
           id: account_id,
-          balance: accountsDict[account_id].amount
+          balance: newAmount
         }
       }
       return withdrawResponse;

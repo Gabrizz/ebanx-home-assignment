@@ -1,10 +1,11 @@
-import accountsDict from '../db';
+import { getAccountById } from '../db';
 
 import { notFoundError } from './shared';
 
 export function fetchAmountByAccountId(account_id: string) {
-  if (account_id in accountsDict) {
-    return accountsDict[account_id].amount
+  const account = getAccountById(account_id);
+  if (account) {
+    return account.amount
   }
   throw notFoundError('Account');
 };

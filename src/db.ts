@@ -3,7 +3,21 @@ import { account } from './types/account';
 let accountsDict: { [key: string]: account } = {};
 
 export function resetDatabase() {
-  accountsDict = {};
+  const newAccountsDict: { [key: string]: account } = {};
+  accountsDict = newAccountsDict;
 }
 
-export default accountsDict;
+export function getAccountsDict() {
+  return accountsDict;
+}
+
+export function getAccountById(id: string) {
+  if (id in accountsDict) {
+    return accountsDict[id];
+  }
+  return undefined;
+}
+
+export function updateAccountById(id: string, account: account) {
+  accountsDict[id] = account;
+}
